@@ -56,7 +56,7 @@
               <a href="{{ url('/products/'.$detail->product_id) }}" target="_blank">{{ $detail->product->name }}</a>
             </td>
 
-            <td> {{ $detail->product->price }}</td>
+            <td> &pound;{{ $detail->product->price }}</td>
             <td>{{ $detail->quantity }}</td>
             <td>&pound;{{ $detail->quantity * $detail->product->price }}</td>
             <td class="td-actions">
@@ -76,6 +76,9 @@
           @endforeach
         </tbody>
       </table>
+
+      <p><strong>Importa a pagar:</strong> {{ auth()->user()->cart->total }}</p>
+
       <div class="text-center">
         <form class="" action="{{ url('/order') }}" method="post">
           {{ csrf_field() }}
